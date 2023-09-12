@@ -20,21 +20,21 @@ class NewUser extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(children: [
               TextField(
-                decoration: InputDecoration(label: Text('First Name')),
+                decoration: const InputDecoration(label: Text('First Name')),
                 controller: fnameController,
               ),
               TextField(
-                decoration: InputDecoration(label: Text('Last Name')),
+                decoration: const InputDecoration(label: Text('Last Name')),
                 controller: lnameController,
               ),
               TextField(
-                decoration: InputDecoration(label: Text('Age')),
+                decoration: const InputDecoration(label: Text('Age')),
                 keyboardType: TextInputType.number,
                 controller: ageController,
               ),
               TextField(
                 keyboardType: TextInputType.phone,
-                decoration: InputDecoration(label: Text('Mobile Number')),
+                decoration: const InputDecoration(label: Text('Mobile Number')),
                 controller: mobController,
               ),
               Row(
@@ -44,10 +44,8 @@ class NewUser extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text("Cancel")),
-                  SizedBox(
-                    width: 8,
-                  ),
+                      child: const Text("Cancel")),
+                  const SizedBox(width: 8),
                   ElevatedButton(
                       onPressed: () {
                         Navigator.pop(context);
@@ -63,7 +61,7 @@ class NewUser extends StatelessWidget {
                         //     age: int.parse(ageController.text),
                         //     number: double.parse(mobController.text)));
                       },
-                      child: Text("Save")),
+                      child: const Text("Save")),
                 ],
               )
             ]),

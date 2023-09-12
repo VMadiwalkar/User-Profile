@@ -18,12 +18,16 @@ class _UsersState extends State<Users> {
       useSafeArea: true,
       isScrollControlled: true,
       context: context,
-      builder: (ctx) => NewUser(),
+      builder: (ctx) => const NewUser(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text("No data available"),
+    );
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -34,7 +38,9 @@ class _UsersState extends State<Users> {
         ],
       ),
       body: Consumer<UserProvider>(
-          builder: (BuildContext context, value, Widget? child) => UserList()),
+        builder: (BuildContext context, userProvider, Widget? child) =>
+            userProvider.allUser.isEmpty ? mainContent : const UserList(),
+      ),
     );
   }
 }
