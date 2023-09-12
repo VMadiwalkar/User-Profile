@@ -13,37 +13,21 @@ class Users extends StatefulWidget {
 }
 
 class _UsersState extends State<Users> {
-  List<User> allUser = [
-    User(
-        firstName: 'Vinay',
-        lastName: 'Madiwalkar',
-        age: 25,
-        number: 88056128894)
-  ];
-
-  void _addUser(User user) {
-    setState(() {
-      allUser.add(user);
-    });
-  }
-
-  void _removeUser(User user) {
-    setState(() {
-      allUser.remove(user);
-    });
-  }
-
   void _openAddUserOverlay() {
     showModalBottomSheet(
       useSafeArea: true,
       isScrollControlled: true,
       context: context,
-      builder: (ctx) => NewUser(),
+      builder: (ctx) => const NewUser(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text("No data available"),
+    );
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -54,7 +38,9 @@ class _UsersState extends State<Users> {
         ],
       ),
       body: Consumer<UserProvider>(
-          builder: (BuildContext context, value, Widget? child) => UserList()),
+        builder: (BuildContext context, userProvider, Widget? child) =>
+            userProvider.allUser.isEmpty ? mainContent : const UserList(),
+      ),
     );
   }
 }
